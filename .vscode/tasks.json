@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "typescript:build",
+			"dependsOn":["npm: lint"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: typescript:build",
+			"detail": "tsc",
+		},
+		{
+			"type": "npm",
+			"script": "lint",
+			"group": {
+				"kind": "build"
+			},
+			"label" :"npm: lint"
+		}
+	]
+}
