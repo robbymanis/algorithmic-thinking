@@ -1,3 +1,11 @@
+class SnowflakeNode {
+    constructor(data: Array<number>) {
+        this.data = data
+    }
+    data: Array<number>
+    next?: SnowflakeNode
+}
+
 function checkRight(snowflake1:Array<number>, snowflake2:Array<number>,start:number) {
     
     for (let index = 0; index < snowflake1.length; index++) {
@@ -25,12 +33,17 @@ function checkLeft(snowflake1:Array<number>, snowflake2:Array<number>, start:num
     }
 }
 
-export function checkIdentical(snowflake1:Array<number>, snowflake2:Array<number>) {
+export function getCode(snowflake:Array<number>) {
+    const total = snowflake.reduce((total, amount) => total + amount)
+    return total % 10000
+}
+
+export function checkIdentical(snowflake1:Array<number>, snowflake2:Array<number>): Result {
     for (let index = 0; index < snowflake1.length; index++) {
         if (checkRight(snowflake1,snowflake2,index))
-            return 1
+            return 'Twin snowflakes found'
         if (checkLeft(snowflake1,snowflake2,index))
-            return 1
+            return 'Twin snowflakes found'
     }
-    return 0
+    return 'No two snowflakes are alike'
 }
