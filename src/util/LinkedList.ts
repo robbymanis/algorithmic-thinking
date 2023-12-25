@@ -10,7 +10,9 @@ class LinkedNode {
      * @param data data for the new node
      * @param next the pointer to the next node
      */
-    constructor(data, next = null) {
+    data: number
+    next: LinkedNode | null
+    constructor(data: number, next: LinkedNode | null = null) {
         this.data = data,
         this.next = next
     }
@@ -22,6 +24,7 @@ class LinkedNode {
  * Constructor sets the head of the list to be null.
  */
 class LinkedList {
+    head: LinkedNode | null
     constructor() {
         this.head = null
     }
@@ -29,7 +32,7 @@ class LinkedList {
      * creates a node at the start of the linked list
      * @param data data for the new node 
      */
-    insertAtStart(data) {
+    insertAtStart(data: number) {
         const newNode = new LinkedNode(data)
         newNode.next = this.head
         this.head = newNode
