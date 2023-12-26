@@ -1,9 +1,29 @@
-class SnowflakeNode {
-    constructor(data: Array<number>) {
-        this.data = data
-    }
+export class SnowflakeNode {
     data: Array<number>
-    next?: SnowflakeNode
+    next: SnowflakeNode | null
+    constructor(data: Array<number>, next:SnowflakeNode | null = null) {
+        this.data = data
+        this.next = next
+    }
+}
+
+export class SnowFlakeList {
+    head: null | SnowflakeNode
+    constructor(head: null | SnowflakeNode = null) {
+        this.head = head
+    }
+    insertAtStart(data: Array<number>) {
+        const newNode = new SnowflakeNode(data)
+        newNode.next = this.head
+        this.head = newNode
+    }
+    printList() {
+        let curr = this.head
+        while (curr) {
+            console.log(`${curr.data} => ${curr.next}`)
+            curr = curr.next
+        }
+    }
 }
 
 function checkRight(snowflake1:Array<number>, snowflake2:Array<number>,start:number) {
